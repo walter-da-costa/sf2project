@@ -1,0 +1,16 @@
+[user]
+        name = wdacosta
+        email = walter.paquete@gmail.com
+[credential]
+        helper = store
+[gui]
+        recentrepo = /home/wdacosta/Documents/dev
+
+[core]
+    excludesfile = /home/wdacosta/.gitignore_global
+
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    cm = commit
