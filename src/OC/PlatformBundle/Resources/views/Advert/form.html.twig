@@ -1,0 +1,50 @@
+
+<div class="well">
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+
+        <div class="form-group">
+                <span class="col-md-offset-3 col-sm-9">
+                    <span>
+                        {{ form_errors(form.author) }}
+                    </span>
+                </span>
+            {{ form_label(form.author, "L'auteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            <div class="col-sm-9">
+                {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="col-md-offset-3 col-sm-9">
+                <span>
+                    {{ form_errors(form.title) }}
+                </span>
+            </span>
+            {{ form_label(form.title, "Titre de l'annonce", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            <div class="col-sm-9">
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="col-md-offset-3 col-sm-9">
+                <span>
+                    {{ form_errors(form.content) }}
+                </span>
+            </span>
+            {{ form_label(form.content, "Contenu de l'annonce", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            <div class="col-sm-9">
+                {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-offset-3 col-sm-10">
+                <button type="submit" class="btn btn-success" id =""  ><span class="glyphicon glyphicon-floppy-saved"></span>Valider</button>
+            </div>
+        </div>
+
+    {{ form_end(form) }}
+</div>
+

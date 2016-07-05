@@ -1,0 +1,35 @@
+
+security:
+    encoders:
+        OC\PlatformBundle\Entity\Adherent:
+            algorithm: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_ADR, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADR:   ROLE_USER
+
+    providers:
+        adherent_provider:
+            entity:
+                class:    OCPlatformBundle:Adherent
+                property: username
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern:   ^/
+            anonymous: true
+            provider:  adherent_provider
+            form_login:
+                login_path: login
+                check_path: login_check
+            logout:
+                path:   logout
+                target: /
+
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+# $2y$13$ImypO.2URkqqNm07IbsJseWkDrV2prEyOuchkgSs9GyR5htQbZQ7m

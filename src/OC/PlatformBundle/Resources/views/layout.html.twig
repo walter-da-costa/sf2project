@@ -1,0 +1,46 @@
+{% if form is defined %}{% form_theme form '@OCPlatform/form_errors.html.twig' %}{% endif %}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}Annonces - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div id="header" class="jumbotron">
+            <h1>WazaMojo</h1>
+            <p>SF2, Duis augue nunc, scelerisque a bibendum sit amet.</p>
+            <div class="text-right">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <a href="{{ path('logout') }}" class="btn btn-danger btn-xs">LogOut &nbsp; <span class="glyphicon glyphicon-log-out"></span> </a>
+                {% else %}
+                    <a href="{{ path('login') }}" class="btn btn-success btn-xs">LogIn &nbsp; <span class="glyphicon glyphicon-log-in"></span> </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="menu" class="col-md-3">
+                <h3>Les annonces</h3>
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="{{ path('oc_platform_home') }}">Accueil</a></li>
+                  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li><a href="{{ path('oc_platform_add') }}" style="color:orange">Ajouter une annonce</a></li>
+                  {% endif %}
+                </ul>
+
+                <h4>Dernières annonces</h4>
+
+                {{ render(controller("OCPlatformBundle:Advert:menu", {'limit': 3})) }}
+            </div>
+
+            <div id="content" class="col-md-9">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <hr>
+        <footer>
+            <p>The sky is the limit © {{ 'now'|date('Y') }} and Beyond.</p>
+        </footer>
+    </div>
+{% endblock %}

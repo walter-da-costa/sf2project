@@ -1,0 +1,27 @@
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}LogIn - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet" />
+    <script src="{{ asset('js/login.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <div class="login-page">
+        <div class="form">
+            {% if error %}
+                <div style="color:red">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <form class="login-form" action="{{ path('login_check') }}" method="post">
+                <input placeholder="username" type="text" id="username" name="_username" value="{{ last_username }}" />
+                <input placeholder="password" type="password" id="password" name="_password" />
+                <button type="submit">login</button>
+                {# <p class="message">Not registered? <a href="#">Create an account</a></p> #}
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
