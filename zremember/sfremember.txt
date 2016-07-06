@@ -1,6 +1,32 @@
+===========================================================================================================
+============================== GIT ========================================================================
+===========================================================================================================
 
+New repo    : git remote add origin https://github.com/walter-da-costa/sf2project.git
+Checkrepo   : git remote -v
 
-mysql -u root --password=root sf2project < sf2project.sql
+Procedure to get on dev branch
+    - git pull origin dev
+
+Procedure to push on dev branch avoiding conflits :
+    - In myBranch
+    - git add .
+    - git commit -m "commit description"
+    - git co dev
+    - git pull origin dev
+    - git co myBranch
+    - git rebase dev
+    - git push origin dev
+
+In some critical cases to bring changes from dev to myBranch:
+    - In myBranch
+    - git merge dev
+
+Other git commands :
+    - git commit --amend -m "new message"
+    - git co -- *twig
+    - git branch -m <oldname> <newname>
+    - git branch -m <newname>
 
 ===========================================================================================================
 ================================= PHP UNIT ================================================================
