@@ -1,0 +1,84 @@
+
+
+mysql -u root --password=root sf2project < sf2project.sql
+denied : allow
+none : all
+
+=========================================================================================================================================
+================================= PHP UNIT ==============================================================================================
+=========================================================================================================================================
+
+php ../phpunit.phar -c app src/WP/DemoBundle/Tests/Utility/CalculatorTest.php
+
+php ../phpunit.phar -c app src/OC/PlatformBundle/Tests/Controller/AdvertControllerTest.php
+
+=========================================================================================================================================
+================================= CONSOLE SF2============================================================================================
+=========================================================================================================================================
+
+php app/console generate:bundle
+
+
+=============================
+DOCTRINE 2
+=============================
+php app/console generate:doctrine:entity
+php app/console doctrine:database:create
+php app/console doctrine:schema:update --dump-sql
+php app/console doctrine:schema:update --force
+
+php app/console doctrine:schema:
+
+doctrine:generate:entities OCPlatformBundle:AdvertSkill
+
+php app/console doctrine:query:dql "SELECT a FROM OCPlatformBundle:Advert a"
+
+php app/console doctrine:query:dql "SELECT al FROM OCPlatformBundle:Advert al WHERE al.author='Cassandro' "
+
+=======================================================
+
+RELATIONS :
+ONE TO ONE : Advert(proprietaire) - Image(inverse)
+MANY TO ONE : Application(proprietaire) - Advert(inverse)
+MANY TO MANY(sans Attribut) : Advert , Category (Une annonce peut appartenir à plusieurs catégories et une catégorie peut contenir plusieurs annonces)
+				Cette relation est particulière dans le sens où Doctrine va devoir créer une table intermédiaire
+				Une table de liaison : advert_category.
+				proprietaire-inverse : ça depend de la conception et de la logique que l'on veut. "A vous de voir"
+
+MANY TO MANY(avec Attribut) : Ex Produit-Commande  : - One-To-Many-To-One
+	Pour illustrer ce manque, rien de tel qu'un exemple : considérons l'entité
+	Produit d'un site e-commerce ainsi que l'entité Commande. Une commande contient
+	plusieurs produits, et bien entendu un même produit peut être dans différentes commandes.
+	On a donc bien une relation Many-To-Many. Voyez-vous le manque ? Lorsqu'un utilisateur
+	ajoute un produit à une commande, où met-on la quantité de ce produit ? Si je veux 3 exemplaires
+	de Harry Potter, où mettre cette quantité ? Dans l'entité Commande ? Non cela n'a pas de sens.
+	Dans l'entité Produit ? Non, cela n'a pas de sens non plus. Cette quantité est un attribut de
+	la relation qui existe entre Produit et Commande, et non un attribut de Produit ni de Commande.
+
+	URL : https://openclassrooms.com/courses/developpez-votre-site-web-avec-le-framework-symfony2/les-relations-entre-entites-avec-doctrine2
+		- Advert One-To-Many AdvertSkill Many-To-One Skill.
+		- One-To-Many-To-One
+
+
+
+VIP VIP REMEMBER: Les relations bidirectionnelles -- MANY TO ONE : Application(proprietaire) - Advert(inverse) :
+DANS : Application.php : @ORM\ManyToOne(targetEntity="OC\PlatformBundle\Entity\Advert", inversedBy="applications")
+DANS : Advert.php : @ORM\OneToMany(targetEntity="OC\PlatformBundle\Entity\Application", mappedBy="advert")
+
+
+=====================
+FIXTURES:
+
+php app/console doctrine:fixtures:load
+'--append' : pour ne pas ecraser les anciennes fixtures
+
+
+doctrine:fixtures:load --fixtures=src/OC/PlatformBundle/DataFixtures/ORM/LoadCategory --append
+
+
+php app/console doctrine:generate:form OCPlatformBundle:Advert
+
+
+
+/home/wdacosta/Documents/dev/sf2project/zremember/insert.sql
+
