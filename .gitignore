@@ -1,4 +1,4 @@
-/zremember/*
+
 /composer.phar
 /composer.lock
 
@@ -17,4 +17,3 @@
 
 /build/
 /vendor/
-/bin/

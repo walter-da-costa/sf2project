@@ -27,7 +27,7 @@ class AdvertController extends Controller
         }
         // Ici je fixe le nombre d'annonces par page à 3
         // Mais bien sûr il faudrait utiliser un paramètre, et y accéder via $this->container->getParameter('nb_per_page')
-        $nbPerPage = 10 ;
+        $nbPerPage = 5 ;
         $listAdverts = $this->getDoctrine()
           ->getManager()
           ->getRepository('OCPlatformBundle:Advert')
@@ -73,9 +73,9 @@ class AdvertController extends Controller
 	      array('id' => 5, 'title' => 'Mission de webmaster'),
 	      array('id' => 9, 'title' => 'Offre de stage webdesigner')
 	    );*/
-
+        $nbAdverts = 4 ;
 	    $repository = $this->getDoctrine()->getRepository('OCPlatformBundle:Advert');
-		$listAdverts = $repository->findBy([],['dateCreation'=> 'desc'],5,0);
+		$listAdverts = $repository->findBy([],['dateCreation'=> 'desc'],$nbAdverts,0);
 		if (null === $listAdverts) {
       		throw $this->createNotFoundException("NO ADVERTS FOUND IN BDD !");
     	}

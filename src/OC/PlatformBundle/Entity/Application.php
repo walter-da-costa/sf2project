@@ -10,7 +10,6 @@ use OC\PlatformBundle\Entity\Advert;
 /**
  * @ORM\Table(name="application")
  * @ORM\Entity(repositoryClass="OC\PlatformBundle\Repository\ApplicationRepository")
- * @ORM\HasLifecycleCallbacks()
  */
 class Application
 {
@@ -75,7 +74,7 @@ class Application
         return $this->content;
     }
 
-    public function setDate($date)
+    public function setDate(\DateTimeInterface $date)
     {
         $this->date = $date;
         return $this;
@@ -97,28 +96,5 @@ class Application
     {
         return $this->advert;
     }
-
-    /**
-    * ----------------------------------------------------------
-    *  CallBacks Methodes
-    *  ---------------------------------------------------------
-    */
-
-    /**
-    * @ORM\PrePersist
-    */
-    public function increase()
-    {
-        $this->getAdvert()->increaseApplication();
-    }
-
-    /**
-    * @ORM\PreRemove
-    */
-    public function decrease()
-    {
-        $this->getAdvert()->decreaseApplication();
-    }
-
 
 }
