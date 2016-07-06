@@ -4,7 +4,6 @@
 namespace OC\PlatformBundle\Controller;
 
 use OC\PlatformBundle\DataForm\AdvertDataForm;
-use OC\PlatformBundle\Entity\Adherent;
 use OC\PlatformBundle\Entity\Advert;
 use OC\PlatformBundle\Entity\Application;
 use OC\PlatformBundle\Entity\Image;
