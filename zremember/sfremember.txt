@@ -59,7 +59,7 @@ doctrine:generate:entities OCPlatformBundle:AdvertSkill
 
 php app/console doctrine:query:dql "SELECT a FROM OCPlatformBundle:Advert a"
 
-php app/console doctrine:query:dql "SELECT a FROM OCPlatformBundle:Advert a WHERE a.author='Cassandro' "
+php app/console doctrine:query:dql "SELECT al FROM OCPlatformBundle:Advert al WHERE al.author='Cassandro' "
 
 ===========================================================================================================
 ========== Generate New User Password for the first time ==================================================
