@@ -4,9 +4,8 @@ parameters:
     m_web_dir: '__DIR__./../../../../../web/uploads/img/'
 
 services:
-    oc_platform.antispam:
-        class:     OC\PlatformBundle\Antispam\OCAntispam
-        arguments: ["@mailer", "%locale%", "5"]
+    oc_platform.less.five:
+        class:     OC\PlatformBundle\TwigExtension\LessFive
         tags:
             -  { name: twig.extension }
 
