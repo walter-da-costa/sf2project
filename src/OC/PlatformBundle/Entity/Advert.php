@@ -201,10 +201,13 @@ class Advert
      * @param \DateTime $dateModification
      *
      * @return Advert
+     *
+     * Les histoires de Callbacks : Evennements
+     * @ORM\PreUpdate
      */
-    public function setDateModification(\DateTimeInterface $dateModification)
+    public function setDateModification()
     {
-        $this->dateModification = $dateModification;
+        $this->dateModification = new \Datetime();
 
         return $this;
     }
@@ -218,20 +221,5 @@ class Advert
     {
         return $this->dateModification;
     }
-
-    /** --------------------------------------------------------- */
-    /** Les histoires de Callbacks : Evennements */
-    /** --------------------------------------------------------- */
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function updateDateModification()
-    {
-        $this->setDateModification(new \Datetime());
-    }
-
-
-
 
 }

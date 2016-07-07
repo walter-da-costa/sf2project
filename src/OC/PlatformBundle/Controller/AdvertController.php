@@ -8,7 +8,7 @@ use OC\PlatformBundle\Entity\Advert;
 use OC\PlatformBundle\Entity\Application;
 use OC\PlatformBundle\Entity\Image;
 use OC\PlatformBundle\Form\AdvertType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

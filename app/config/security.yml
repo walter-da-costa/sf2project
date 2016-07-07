@@ -31,5 +31,3 @@ security:
                 target: /
 
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-# $2y$13$ImypO.2URkqqNm07IbsJseWkDrV2prEyOuchkgSs9GyR5htQbZQ7m

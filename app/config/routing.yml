@@ -4,12 +4,12 @@ oc_platform:
     prefix:   /
 
 login:
-    pattern:   /login
+    path:   /login
     defaults:  { _controller: OCPlatformBundle:Security:login }
 
 login_check:
-    pattern:   /login_check
+    path:   /login_check
 
 logout:
-    pattern:   /logout
+    path:   /logout
 
